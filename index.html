@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>type</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <textarea
+                id="text"
+                autofocus
+                placeholder="type here"
+                style="font-size: 20px"
+            ></textarea>
+            <div id="stats">
+                <span id="time"></span>
+                <span id="words">0</span>
+                <span id="characters">0</span>
+                <div id="font-size-container">
+                    <input
+                        id="font-size"
+                        type="range"
+                        min="10"
+                        max="32"
+                        value="20"
+                    />
+                    <span id="font-size-value">20</span>
+                </div>
+                <button id="theme-toggle"><span>theme</span></button>
+                <button id="fullscreen-toggle"><span>fullscreen</span></button>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

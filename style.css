@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+:root {
+    --bg-color: #242424;
+    --text-color: rgba(255, 255, 255, 0.87);
+    --textarea-bg: transparent;
+    --button-text: rgba(255, 255, 255, 0.5);
+    --button-text-hover: rgba(255, 255, 255);
+    --stats-text: rgba(255, 255, 255, 0.5);
+
+    font-family: "JetBrains Mono", system-ui, Avenir, Helvetica, Arial,
+        sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.light {
+    --bg-color: #f4f4f4;
+    --text-color: #213547;
+    --textarea-bg: #ffffff;
+    --button-text: rgba(0, 0, 0, 0.5);
+    --button-text-hover: rgba(0, 0, 0);
+    --stats-text: rgba(0, 0, 0, 0.5);
+    color-scheme: light;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
+    transition:
+        background-color 0.3s,
+        color 0.3s; /* Smooth transition */
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    padding: 32px;
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    max-width: 1024px;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+    align-self: center;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+#stats {
+    display: flex;
+    gap: 16px;
+    justify-items: center;
+    align-items: center;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+    flex-wrap: wrap;
+    color: var(--stats-text);
+}
+
+#words::after {
+    content: "w";
+}
+
+#characters::after {
+    content: "c";
+}
+
+#font-size-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+        border-color 0.25s,
+        background-color 0.3s,
+        color 0.3s;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: var(--button-bg);
+    color: var(--button-text-hover);
+}
+
+/* mobile styles */
+
+@media (max-width: 768px) {
+    textarea {
+        padding: 8px;
+        width: 100%;
+        max-width: 100%;
+    }
+}
