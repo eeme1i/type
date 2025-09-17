@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // download written content as .txt file
   downloadBtn.addEventListener("click", () => {
     const text = textArea.value;
+    if (!text) {
+      return;
+    }
     const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
