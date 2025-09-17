@@ -6,11 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const textArea = document.getElementById("text");
+
+  // initialize width from localStorage if set
+  const storedWidth = localStorage.getItem("textAreaWidth");
+  if (storedWidth) {
+    textArea.style.width = storedWidth;
+  }
+
+  // observe width changes and save to localStorage
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      // offsetWidth includes padding and scrollbar in border-box sizing
+      const width = `${entry.target.offsetWidth}px`;
+      localStorage.setItem("textAreaWidth", width);
+    }
+  });
+  resizeObserver.observe(textArea);
+
   const fontSizeInput = document.getElementById("font-size");
   const fontSizeValue = document.getElementById("font-size-value");
   const themeToggleButton = document.getElementById("theme-toggle");
   const timeDisplay = document.getElementById("time");
   const fullscreenToggleButton = document.getElementById("fullscreen-toggle");
+  const downloadBtn = document.getElementById("download-btn");
 
   // toggle fullscreen
   fullscreenToggleButton.addEventListener("click", () => {
@@ -21,6 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.requestFullscreen();
       fullscreenToggleButton.innerText = "exit";
     }
+  });
+
+  // download written content as .txt file
+  downloadBtn.addEventListener("click", () => {
+    const text = textArea.value;
+    const blob = new Blob([text], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "typing.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   });
 
   // set time

@@ -62,12 +62,13 @@ textarea {
     background-color: transparent;
     border: none;
     width: 100%;
-    max-width: 1024px;
+    max-width: 100%;
     transition:
         background-color 0.3s,
         color 0.3s;
     align-self: center;
-    resize: none;
+    resize: horizontal;
+    overflow: auto;
 }
 
 textarea:focus {
